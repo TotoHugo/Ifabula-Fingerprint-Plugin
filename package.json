@@ -1,0 +1,17 @@
+{
+  "name": "com.fgtit.reader",
+  "version": "0.0.1",
+  "description": "",
+  "cordova": {
+    "id": "com.fgtit.reader",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "",
+  "license": "ISC"
+}

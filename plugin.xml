@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.fgtit.reader" version="0.0.1"
+	xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>FingerPrintPlugin2</name>
+
+    <js-module name="CDVNetEvent" src="www/CDVNetEvent.js" />
+	<js-module name="FingerPrintPlugin2" src="www/FingerPrintPlugin2.js">
+		<clobbers target="cordova.plugins.FingerPrintPlugin2" />
+	</js-module>
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="FingerPrintPlugin2">
+				<param name="android-package" value="com.fgtit.reader.FingerPrintPlugin2" />
+			</feature>
+		</config-file>
+		<config-file parent="/*" target="AndroidManifest.xml">
+			<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+		    <uses-permission android:name="android.permission.BLUETOOTH" />
+		    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+		    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+		</config-file>
+		<source-file src="src/android/FingerPrintPlugin2.java" target-dir="src/com/fgtit/reader" />
+        <source-file src="src/android/data/wsq.java" target-dir="src/com/fgtit/data" />
+
+		<source-file src="src/android/fpcore/FPMatch.java" target-dir="src/com/fgtit/fpcore" />
+		<source-file src="src/android/data/Conversions.java" target-dir="src/com/fgtit/data" />
+		
+		<!-- <source-file src="src/android/jniLibs/armeabi/libconversions.so" target-dir="app/src/main/jniLibs/armeabi" />
+		<source-file src="src/android/jniLibs/armeabi/libfgtitalg.so" target-dir="app/src/main/jniLibs/armeabi" />
+		<source-file src="src/android/jniLibs/armeabi/libfpcore.so" target-dir="app/src/main/jniLibs/armeabi" />
+		<source-file src="src/android/jniLibs/armeabi/libfpimage.so" target-dir="app/src/main/jniLibs/armeabi" />
+		<source-file src="src/android/jniLibs/armeabi/libwsq.so" target-dir="app/src/main/jniLibs/armeabi" /> -->
+
+		<!-- <source-file src="src/android/jniLibs/armeabi/libconversions.so" target-dir="app/src/main/jniLibs/arm64-v8a" />
+		<source-file src="src/android/jniLibs/armeabi/libfgtitalg.so" target-dir="app/src/main/jniLibs/arm64-v8a" />
+		<source-file src="src/android/jniLibs/armeabi/libfpcore.so" target-dir="app/src/main/jniLibs/arm64-v8a" />
+		<source-file src="src/android/jniLibs/armeabi/libfpimage.so" target-dir="app/src/main/jniLibs/arm64-v8a" />
+		<source-file src="src/android/jniLibs/armeabi/libwsq.so" target-dir="app/src/main/jniLibs/arm64-v8a" />
+
+		<source-file src="src/android/jniLibs/armeabi/libconversions.so" target-dir="app/src/main/jniLibs/x86_64" />
+		<source-file src="src/android/jniLibs/armeabi/libfgtitalg.so" target-dir="app/src/main/jniLibs/x86_64" />
+		<source-file src="src/android/jniLibs/armeabi/libfpcore.so" target-dir="app/src/main/jniLibs/x86_64" />
+		<source-file src="src/android/jniLibs/armeabi/libfpimage.so" target-dir="app/src/main/jniLibs/x86_64" />
+		<source-file src="src/android/jniLibs/armeabi/libwsq.so" target-dir="app/src/main/jniLibs/x86_64" /> -->
+
+		<source-file src="src/android/jniLibs/armeabi/libconversions.so" target-dir="app/src/main/jniLibs/armeabi-v7a" />
+		<source-file src="src/android/jniLibs/armeabi/libfgtitalg.so" target-dir="app/src/main/jniLibs/armeabi-v7a" />
+		<source-file src="src/android/jniLibs/armeabi/libfpcore.so" target-dir="app/src/main/jniLibs/armeabi-v7a" />
+		<source-file src="src/android/jniLibs/armeabi/libfpimage.so" target-dir="app/src/main/jniLibs/armeabi-v7a" />
+		<source-file src="src/android/jniLibs/armeabi/libwsq.so" target-dir="app/src/main/jniLibs/armeabi-v7a" />
+
+		<source-file src="src/android/jniLibs/armeabi/libconversions.so" target-dir="app/src/main/jniLibs/x86" />
+		<source-file src="src/android/jniLibs/armeabi/libfgtitalg.so" target-dir="app/src/main/jniLibs/x86" />
+		<source-file src="src/android/jniLibs/armeabi/libfpcore.so" target-dir="app/src/main/jniLibs/x86" />
+		<source-file src="src/android/jniLibs/armeabi/libfpimage.so" target-dir="app/src/main/jniLibs/x86" />
+		<source-file src="src/android/jniLibs/armeabi/libwsq.so" target-dir="app/src/main/jniLibs/x86" />
+
+		 <framework src="src/android/finger.gradle" custom="true" type="gradleReference" />
+	</platform>
+</plugin>
