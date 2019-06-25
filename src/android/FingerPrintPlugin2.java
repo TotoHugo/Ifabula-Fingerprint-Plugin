@@ -727,6 +727,7 @@ public class FingerPrintPlugin2 extends CordovaPlugin {
 							multipartMessages.add(new PluginResult(PluginResult.Status.OK, socketId));
 							multipartMessages.add(new PluginResult(PluginResult.Status.OK, encoded));
 							multipartMessages.add(new PluginResult(PluginResult.Status.OK, "getImage"));
+							multipartMessages.add(new PluginResult(PluginResult.Status.OK, "success"));
 							pluginResult = new PluginResult(PluginResult.Status.OK, multipartMessages);
 							pluginResult.setKeepCallback(true);
 
@@ -760,6 +761,7 @@ public class FingerPrintPlugin2 extends CordovaPlugin {
 											multipartMessages.add(new PluginResult(PluginResult.Status.OK, socketId));
 											multipartMessages.add(new PluginResult(PluginResult.Status.OK, mRefData));
 											multipartMessages.add(new PluginResult(PluginResult.Status.OK, "enroll"));
+											multipartMessages.add(new PluginResult(PluginResult.Status.OK, "success"));
 											pluginResult = new PluginResult(PluginResult.Status.OK, multipartMessages);
 											pluginResult.setKeepCallback(true);
 											this.mContextForReceive.sendPluginResult(pluginResult);
@@ -769,6 +771,7 @@ public class FingerPrintPlugin2 extends CordovaPlugin {
 											multipartMessages.add(new PluginResult(PluginResult.Status.OK, socketId));
 											multipartMessages.add(new PluginResult(PluginResult.Status.OK, "gagal"));
 											multipartMessages.add(new PluginResult(PluginResult.Status.OK, "enroll"));
+											multipartMessages.add(new PluginResult(PluginResult.Status.OK, "failed"));
 											pluginResult = new PluginResult(PluginResult.Status.OK, multipartMessages);
 											pluginResult.setKeepCallback(true);
 											this.mContextForReceive.sendPluginResult(pluginResult);
@@ -789,12 +792,14 @@ public class FingerPrintPlugin2 extends CordovaPlugin {
 											multipartMessages = new ArrayList<PluginResult>();
 											if (ret > 70) {
 												multipartMessages.add(new PluginResult(PluginResult.Status.OK, socketId));
-												multipartMessages.add(new PluginResult(PluginResult.Status.OK, "verify sucess.."+ret));
+												multipartMessages.add(new PluginResult(PluginResult.Status.OK, ret));
 												multipartMessages.add(new PluginResult(PluginResult.Status.OK, "verify"));
+												multipartMessages.add(new PluginResult(PluginResult.Status.OK, "success"));
 											}else{
 												multipartMessages.add(new PluginResult(PluginResult.Status.OK, socketId));
-												multipartMessages.add(new PluginResult(PluginResult.Status.OK, "verify not match.."+ret));
+												multipartMessages.add(new PluginResult(PluginResult.Status.OK, ret));
 												multipartMessages.add(new PluginResult(PluginResult.Status.OK, "verify"));
+												multipartMessages.add(new PluginResult(PluginResult.Status.OK, "failed"));
 											}
 
 											
@@ -809,6 +814,7 @@ public class FingerPrintPlugin2 extends CordovaPlugin {
 											multipartMessages.add(new PluginResult(PluginResult.Status.OK, socketId));
 											multipartMessages.add(new PluginResult(PluginResult.Status.OK, "verify gagal.."));
 											multipartMessages.add(new PluginResult(PluginResult.Status.OK, "verify"));
+											multipartMessages.add(new PluginResult(PluginResult.Status.OK, "failed"));
 											pluginResult = new PluginResult(PluginResult.Status.OK, multipartMessages);
 											pluginResult.setKeepCallback(true);
 											this.mContextForReceive.sendPluginResult(pluginResult);
@@ -820,6 +826,17 @@ public class FingerPrintPlugin2 extends CordovaPlugin {
 							multipartMessages = new ArrayList<PluginResult>();
 							multipartMessages.add(new PluginResult(PluginResult.Status.OK, socketId));
 							multipartMessages.add(new PluginResult(PluginResult.Status.OK, "size not sucess.."));
+							String method = "";
+							if(mDeviceCmd == CMD_ENROLHOST){
+								method="enroll";
+							}else if(mDeviceCmd == CMD_CAPTUREHOST){
+								method="verify";
+							}else if (mDeviceCmd == CMD_GETIMAGE){
+								method="getImage";
+							}
+							multipartMessages.add(new PluginResult(PluginResult.Status.OK, method));
+							multipartMessages.add(new PluginResult(PluginResult.Status.OK, "failed"));
+
 							pluginResult = new PluginResult(PluginResult.Status.OK, multipartMessages);
 							pluginResult.setKeepCallback(true);
 							this.mContextForReceive.sendPluginResult(pluginResult);

@@ -71,11 +71,12 @@ channel.onCordovaReady.subscribe(function() {
 		exports.onDeviceAdded.fire(deviceInfo);
 	}, null, 'FingerPrintPlugin2', 'registerDeviceAdded', []);
 
-	exec(function (socketId, data, method) {
+	exec(function (socketId, data, method, status) {
 		exports.onReceive.fire({
 			socketId: socketId,
 			data: data,
-			method: method
+			method: method,
+			status: status
 		});
 	}, null, 'FingerPrintPlugin2', 'registerReceive', []);
 
